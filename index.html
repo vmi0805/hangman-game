@@ -105,25 +105,38 @@
         matchedIndices.push(i);
         console.log(matchedIndices[i]);
         $('#letter-'+i).html(event.key);
-        guessCounterRight++;
       }
       if(wordG[i] !== event.key){
-        guessCounterWrong-2;
-
-        // decreases the guesses remaining
-        
-        console.log(guessCounterWrong);
-        console.log(guessCounterRight);
-
-                // guessCounterNum = guessCounterNum +1-6+5;
-                // $('#guessesRemaining').html(guessCounterNum);
-
-        // adds wrong letters to bottom
-
-
       }
     }
   }
+
+// add wrong letters to bottom the same way I did based on the word selected - I need to finish this section after I fix the game ending section below
+
+
+// game ending
+
+    // // Wrong counter function
+    // let wrongCounterNum = 0;
+    // function wrongCounter(){
+    //   wrongCounterNum++;
+    //   console.log(wrongCounterNum);
+    //       if(wrongCounterNum == 6) {
+    //       // $(".mini-box-left").append("<img id="vanhalen" src="Assets/images/vanhalen.jpg" alt="did not work">");
+    //       alert("You lose.");
+    //       }
+    // }
+
+    // Right counter function
+    // let rightCounterNum = 0;
+    // function rightCounter(){
+    //   rightCounterNum = rightCounterNum + 1;
+    //   console.log(rightCounterNum);
+    //       if(rightCounterNum == wordG.length) {
+    //       // $(".mini-box-left").append("<img id="vanhalen" src="Assets/images/vanhalen.jpg" alt="did not work">");
+    //       alert("You win.");
+    //       }
+    // }
 
 
 </script>
