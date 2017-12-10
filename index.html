@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Muscle Car Hangman</title>
+      <link rel="stylesheet" href="Assets/css/reset.css">
+      <link rel="stylesheet" href="Assets/css/style2.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--       <script type="text/javascript" src="Assets/javascript/game.js"></script>  -->
+</head>
+
+<body>
+
+<div class ="container">
+
+  <div class="floating-title">
+    <h1>Muscle Car Hangman</h1>
+  </div>
+
+
+<!-- The game side-->
+  <div class="right">
+    <div class="right-img">
+      <img id="vehicles-camaro" src = "Assets/images/68-camaro.jpg" alt="kyle's car">
+    </div>
+
+    <div id="game">
+
+<!-- Word blanks-->
+      <div id="mini-box-right-1">
+        <p>Word to guess</p>
+      </div>
+
+<!-- Guesses remaining-->
+      <div id="mini-box-right-2">
+        <p>Guesses remaining</p>
+        <div id="guessesRemaining"></div>
+      </div>
+
+<!-- Letters guessed-->
+      <div id="mini-box-right-3">
+        <p>Wrong letters guessed</p>
+      </div>
+
+    </div>
+  </div>
+
+<!-- Display image on this side after the game is won or lost-->
+  <div class="left">
+    <div id="left-img">
+      <img id="vehicles-bronco" src = "Assets/images/72-bronco.jpg" alt="kyle's old truck">
+    </div>
+
+    <div id="game">
+
+      <div id="mini-box-left">
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+
+// Pick the word for the user to guess
+  let wordG = ""
+
+  function randomWord(){
+    let randomNumber = Math.floor(Math.random()*10)
+    // console.log(randomNumber)
+    if(randomNumber<5){
+      wordG = "motor"
+    } else{
+      wordG = "exhaust"
+    }
+  }
+  window.addEventListener("load", randomWord());
+
+
+// Update the number of blanks
+  
+  const wordtoGuess = $("#mini-box-right-1");
+
+  for (let i=0; i<wordG.length; i++){
+    const newLetter = $("<div>"+"</div>");
+    $(newLetter).addClass("blank-div");
+    $(newLetter).attr('id', 'letter-'+i);
+    wordtoGuess.append(newLetter);
+  }
+
+/// Guess letters to try to win
+
+  window.addEventListener("keyup", checkGuess);
+
+  let guessCounterWrong = 0;
+  let guessCounterRight = 0;
+  function checkGuess(event) {
+    console.log(event.key);
+    const matchedIndices = [];
+    for(let i = 0; i < wordG.length; i++) {
+      if(wordG[i] === event.key) {
+        matchedIndices.push(i);
+        console.log(matchedIndices[i]);
+        $('#letter-'+i).html(event.key);
+        guessCounterRight++;
+      }
+      if(wordG[i] !== event.key){
+        guessCounterWrong-2;
+
+        // decreases the guesses remaining
+        
+        console.log(guessCounterWrong);
+        console.log(guessCounterRight);
+
+                // guessCounterNum = guessCounterNum +1-6+5;
+                // $('#guessesRemaining').html(guessCounterNum);
+
+        // adds wrong letters to bottom
+
+
+      }
+    }
+  }
+
+
+</script>
+
+
+</body>
+
+</html>
